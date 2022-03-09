@@ -1,3 +1,11 @@
+.item {
+  margin-bottom: 15px;
+}
+
+#list ul {
+  list-style: none;
+}
+
 h1 {
   margin-bottom: 30px;
 }
@@ -6,7 +14,6 @@ input[type="text"] {
   float: left;
 }
 .narrow-button {
-  float: left;
   margin-left: 10px;
 }
 .loader {

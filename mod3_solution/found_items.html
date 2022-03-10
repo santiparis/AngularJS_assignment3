@@ -1,8 +1,9 @@
 <div id="list">
-	<ul>
+	<div ng-if="empty">Nothing found.</div>
+	<ul ng-if="!empty">
 		<li class="item" ng-repeat="item in items">
 			<div>Name: {{item.name}}</div>
-			<div>Description: {{item.description}}</div>
+			<div>Description: {{item.description}} {{empty}}</div>
 			<div><button ng-click="onRemove({index: $index});">Remove Item</button></div>
 		</li>
 	</ul>

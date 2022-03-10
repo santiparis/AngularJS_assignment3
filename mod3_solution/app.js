@@ -11,7 +11,8 @@
 			templateUrl: 'found_items.html',
 			scope: {
 				items: '<',
-				onRemove: '&'
+				onRemove: '&',
+				empty: '<'
 			}
 		};
 
@@ -24,13 +25,19 @@
 		let narrow = this;
 
 		narrow.searchTerm = '';
-		narrow.found = [];
 		narrow.findItems = function () {
-			let promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
 
-			promise.then(function (response) {
+			if (!narrow.searchTerm) {
+				narrow.empty = true;
+			} else {
+				let promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
+
+				promise.then(function (response) {
 				narrow.found = response;
-			});
+				});
+				narrow.empty = false;
+			}
+			
 		}
 
 		narrow.removeItem = function (index) {
